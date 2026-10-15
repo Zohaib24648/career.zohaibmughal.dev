@@ -1,0 +1,348 @@
+/* career.zohaibmughal.dev. Direction: "The page is the object" (the page is the CV).
+   Tokens and the reasons behind them: DESIGN.md beside build.py. No lines, shadows or gradients. */
+
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/STIXTwoText.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/STIXTwoText-Italic.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: swap; }
+
+:root {
+  --bg: #ecebe7;          /* bone: the paper */
+  --surface: #e1dfd9;     /* stone: one step off the paper */
+  --ink: #38450f;         /* olive: every word, and the ground the paper sits on */
+  --muted: #535e2c;      /* 5.2:1 on stone, 5.9:1 on bone */
+  --mark: #d3d6c4;
+  --input: #4c5a22;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-sub: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+
+  --m: clamp(16px, 3vw, 32px);
+  --gap: clamp(16px, 2.4vw, 32px);
+  --section: clamp(96px, 12vw, 180px);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--step-body)/1.45 "STIX Two Text", "Times New Roman", serif;
+  font-kerning: normal; font-variant-numeric: lining-nums; text-rendering: optimizeLegibility;
+}
+h1, h2, h3 { margin: 0; font-weight: 400; letter-spacing: -0.026em; line-height: 1.1; text-wrap: balance; }
+p, ul, dl, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+p { text-wrap: pretty; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+::selection { background: var(--ink); color: var(--bg); }
+/* Two-tone focus ring: a bone edge inside an ink outline, so it shows on paper and on olive alike. */
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px var(--bg); }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 16px; top: -100px; z-index: 100; background: var(--bg); color: var(--ink); padding: 12px 16px; }
+.skip:focus { top: 16px; }
+
+.link {
+  text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 0.06em;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  transition: text-decoration-color var(--t-hover) ease;
+}
+.button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px;
+  background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600;
+  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+}
+.button:active, .cell:active, .submit:active, .opt:active span, .ptab:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .link:hover { text-decoration-color: currentColor; text-decoration-thickness: 0.1em; }
+  .button:hover { background: var(--input); }
+}
+
+/* ---------- hero: the CV card over the dimmed work ---------- */
+.hero { position: relative; height: 100svh; background: var(--ink); }
+.hero-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; padding: 6svh var(--m); background: var(--ink); isolation: isolate; }
+.hero-ground {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top;
+  filter: grayscale(1) brightness(0.62) contrast(1.15); mix-blend-mode: multiply; opacity: 0.9;
+}
+.card {
+  position: relative; z-index: 1; width: min(100%, 58vw); max-width: 980px; min-height: 64svh;
+  display: flex; flex-direction: column; gap: 28px; padding: 32px;
+  background: var(--bg); color: var(--ink); transform-origin: 0% 100%;
+}
+.card-name { display: flex; justify-content: space-between; gap: 16px; font-size: var(--step-head); }
+.card-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.card-right { display: grid; gap: 28px; }
+.card-headline { font-weight: 600; margin-bottom: 10px; }
+.card-facts li + li { margin-top: 2px; }
+.card-line { font-style: italic; font-size: var(--step-lead); line-height: 1.25; max-width: 30ch; }
+.switch { border: 0; margin: 0; padding: 0; min-width: 0; }
+.switch legend { padding: 0; margin-bottom: 10px; font-size: var(--step-small); color: var(--muted); }
+.opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.opt { position: relative; }
+.opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.opt span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; background: var(--surface);
+  font-size: var(--step-small); font-weight: 600; transition: background-color var(--t-hover) ease, color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+}
+.opt input:checked + span { background: var(--ink); color: var(--bg); }
+.opt input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px var(--bg); }
+@media (hover: hover) and (pointer: fine) { .opt input:not(:checked):hover + span { background: var(--mark); } }
+.nojs { font-size: var(--step-small); }
+.nojs a { margin-right: 10px; }
+.card-foot { margin-top: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.card-credit { font-size: var(--step-small); color: var(--muted); }
+.card-foot .link { justify-self: end; font-size: var(--step-small); font-weight: 600; }
+
+.stub {
+  display: inline-grid; gap: 2px; margin: 24px var(--m) 32px; padding: 14px 20px; background: var(--ink); color: var(--bg);
+  text-decoration: none; transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+}
+.stub:active { transform: scale(0.97); }
+.stub-name { font-weight: 600; }
+.stub-role { font-size: var(--step-small); font-style: italic; }
+@media (hover: hover) and (pointer: fine) { .stub:hover { background: var(--input); } }
+
+/* ---------- work: five folders that pile up ---------- */
+.work { padding-top: var(--section); background: var(--bg); }
+.section-title { font-size: var(--step-sub); padding: 0 var(--m); margin-bottom: 40px; }
+.folders { --n: 5; }
+/* Each folder carries 64px of extra paper per folder after it, so every folder's bottom edge lands on
+   the same line: the pile then leaves the screen as one block instead of the last folder sliding up
+   over the earlier tabs. */
+.folder { position: sticky; top: calc(var(--i) * 64px); z-index: calc(var(--i) + 1); padding-bottom: calc((var(--n) - 1 - var(--i)) * 64px); }
+.folder-strip { height: 64px; display: flex; align-items: flex-end; gap: 6px; padding: 0 var(--m); }
+.tab {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 22px 0 18px; font-size: var(--step-lead);
+  clip-path: polygon(0 100%, 0 12px, 10px 0, calc(100% - 20px) 0, 100% 100%); text-decoration: none; white-space: nowrap;
+}
+.tab a { text-decoration: none; }
+.tab-role { font-size: var(--step-small); font-weight: 600; }
+.folder-cat { margin-left: auto; align-self: center; font-size: var(--step-small); font-weight: 600; }
+.folder-body {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap);
+  padding: 32px var(--m) 72px; min-height: calc(80svh - 64px);
+}
+.folder-img { grid-column: 1 / 8; }
+.folder-img img { width: 100%; height: calc(80svh - 64px - 104px); min-height: 360px; object-fit: cover; object-position: left top; }
+.folder-text { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 16px; max-width: 65ch; }
+.folder-dates { font-size: var(--step-small); font-weight: 600; }
+.folder-bullets li { font-size: var(--step-body); }
+.folder-links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-weight: 600; margin-top: auto; }
+.tone-olive { background: var(--ink); color: var(--bg); }
+.tone-olive .tab-name { background: var(--bg); color: var(--ink); }
+.tone-olive .tab-role { background: var(--surface); color: var(--ink); }
+.tone-bone { background: var(--bg); color: var(--ink); }
+.tone-bone .tab-name { background: var(--ink); color: var(--bg); }
+.tone-bone .tab-role { background: var(--surface); color: var(--ink); }
+.tone-stone { background: var(--surface); color: var(--ink); }
+.tone-stone .tab-name { background: var(--ink); color: var(--bg); }
+.tone-stone .tab-role { background: var(--bg); color: var(--ink); }
+
+/* ---------- the cover letter ---------- */
+.letter-ground { background: var(--ink); padding: clamp(72px, 8vw, 120px) var(--m); display: grid; place-items: center; }
+.sheet {
+  --r: 9px;
+  width: min(640px, 100%); background: var(--bg); color: var(--ink); padding: 60px 60px calc(var(--r) * 2);
+  mask: radial-gradient(var(--r) at 50% 100%, #0000 97%, #000) 50% 100% / calc(var(--r) * 2.6) 100% repeat-x; /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+}
+.sheet p + p { margin-top: 1em; }
+.greeting { font-style: italic; }
+mark { background: var(--mark); color: inherit; padding: 0 0.15em; }
+.signature { margin-top: 2em !important; font-style: italic; font-size: var(--step-lead); }
+.sig-role { margin-top: 2px !important; font-size: var(--step-small); color: var(--muted); }
+.tearoff {
+  margin: 40px -60px 0; padding: 0 60px; min-height: 76px; display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 12px; border-top: 5px dotted var(--ink); font-weight: 600;
+}
+
+/* ---------- outside client work: square plate, spare text ---------- */
+.showcase { position: relative; background: var(--surface); padding: var(--section) var(--m); }
+.ptabs { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-left: calc(50% + var(--gap) / 2); margin-bottom: 40px; }
+.ptab {
+  font: inherit; font-size: var(--step-body); background: none; border: 0; padding: 8px 0; min-height: 44px; cursor: pointer;
+  color: var(--ink); text-decoration: underline 0.08em transparent; text-underline-offset: 0.3em;
+  transition: color var(--t-hover) ease, text-decoration-color var(--t-hover) ease;
+}
+.ptab[aria-selected="true"] { color: var(--ink); text-decoration-color: currentColor; }
+.panel { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); min-height: 64svh; }
+.panel + .panel { margin-top: var(--section); }
+.js .panel + .panel { margin-top: 0; }
+.js .panel[data-hidden] { display: none; }
+.js .panel { animation: panel-in var(--t-ui) var(--ease-out); }
+@keyframes panel-in { from { opacity: 0; } }
+.plate img, .plate-figure { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: left top; }
+.plate-figure { display: grid; align-content: center; padding: 10%; background: var(--bg); font-size: var(--step-lead); }
+.plate-figure span { display: block; font-size: clamp(3.5rem, 2rem + 6vw, 7.5rem); line-height: 1; letter-spacing: -0.03em; }
+.panel-text { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+.panel-text h3 { font-size: var(--step-sub); max-width: 18ch; }
+.panel-text p { max-width: 38ch; }
+.plate-note { font-size: var(--step-small); font-weight: 600; color: var(--muted); }
+.cells { display: grid; grid-template-columns: 1fr 1fr; margin-top: auto; }
+.cell {
+  display: flex; align-items: center; min-height: 72px; padding: 0 20px; text-decoration: none; font-weight: 600;
+  transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+}
+.cell-ink { background: var(--ink); color: var(--bg); }
+.cell-tone { background: var(--bg); color: var(--ink); }
+.cell-quiet { font-style: italic; font-weight: 400; }
+@media (hover: hover) and (pointer: fine) { a.cell-ink:hover { background: var(--input); } a.cell-tone:hover { background: var(--mark); } }
+
+/* ---------- on the record: a printed card, cut by the section edge ---------- */
+.proof { background: var(--ink); height: min(112svh, 1060px); overflow: hidden; display: flex; justify-content: center; padding-top: var(--section); }
+.guest-card {
+  width: min(56vw, 860px); aspect-ratio: 5 / 7; padding: 56px; background: var(--bg); color: var(--ink);
+  text-align: center; transform: rotate(-1.5deg);
+}
+.guest-card h2 { font-size: var(--step-sub); margin-bottom: 36px; }
+.tools { font-size: var(--step-lead); line-height: 1.7; }
+.record { margin-top: 40px; font-size: var(--step-body); line-height: 1.7; }
+
+/* ---------- contact: a coupon to cut out ---------- */
+.coupon-ground { background: var(--bg); padding: var(--section) var(--m); }
+.coupon {
+  --n: 14px;
+  position: relative; display: grid; grid-template-columns: 46% 54%; max-width: 1180px; margin: 0 auto;
+  min-height: 460px; background: var(--ink); color: var(--bg);
+  mask:
+    radial-gradient(var(--n) at 46% 0, #0000 97%, #000) top / 100% 51% no-repeat, /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+    radial-gradient(var(--n) at 46% 100%, #0000 97%, #000) bottom / 100% 51% no-repeat; /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+}
+.coupon::before { content: ""; position: absolute; left: calc(46% - 2.5px); top: calc(var(--n) + 10px); bottom: calc(var(--n) + 10px); border-left: 5px dotted var(--bg); }
+.coupon-left { padding: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+.coupon-left h2 { font-size: var(--step-sub); font-weight: 600; max-width: 12ch; }
+.coupon-left p { max-width: 32ch; }
+.coupon-right { padding: 48px; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.field input {
+  width: 100%; height: 52px; border: 0; border-radius: 0; padding: 0 16px; background: var(--input); color: var(--bg);
+  font: inherit; font-size: var(--step-body);
+}
+.field input::placeholder { color: #d9dcc9; opacity: 1; }
+.field input:focus-visible { outline: 3px solid var(--bg); outline-offset: 2px; }
+.submit {
+  height: 56px; margin-top: 6px; border: 0; border-radius: 0; background: var(--bg); color: var(--ink); font: inherit;
+  font-weight: 600; cursor: pointer; transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease;
+}
+.submit:focus-visible { outline-color: var(--bg); box-shadow: 0 0 0 2px var(--ink); }
+@media (hover: hover) and (pointer: fine) { .submit:hover { background: var(--mark); } }
+
+/* ---------- footer: the back of the card ---------- */
+.back { background: var(--ink); padding: var(--section) var(--m) 48px; }
+.postcard {
+  --s: 92px;
+  position: relative; max-width: 1180px; margin: 0 auto; min-height: 420px; padding: 80px 56px 36px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; background: var(--bg); color: var(--ink);
+  mask: radial-gradient(calc(var(--s) / 2) at 50% 0, #0000 97%, #000) 50% 0 / var(--s) 100% repeat-x; /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+}
+.pc-message h2 { font-size: var(--step-sub); margin-bottom: 20px; }
+.pc-message p + p { margin-top: 6px; }
+.pc-address { padding-top: 136px; }
+.stamp { position: absolute; top: 80px; right: 56px; width: 88px; padding: 6px; background: var(--surface); }
+.address li + li { margin-top: 12px; }
+.address a { overflow-wrap: anywhere; }
+.imprint { grid-column: 1 / -1; text-align: center; font-size: var(--step-small); color: var(--muted); }
+
+/* ---------- project pages ---------- */
+.project { background: var(--bg); }
+.folder-open { position: static; min-height: 0; padding-bottom: 0; }
+.case { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); padding: 40px var(--m) 96px; }
+.case-hero { grid-column: 1 / 8; position: sticky; top: 24px; align-self: start; overflow: hidden; }
+.case-hero img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; }
+.case-text { grid-column: 8 / 13; display: flex; flex-direction: column; gap: 24px; max-width: 65ch; }
+.case-lead { font-size: var(--step-lead); line-height: 1.3; }
+.case-facts { display: grid; gap: 10px; }
+.case-facts div { display: grid; grid-template-columns: 4.5em 1fr; gap: 12px; }
+.case-facts dt { font-style: italic; }
+.case-facts dd { margin: 0; }
+.case-live { display: flex; flex-wrap: wrap; gap: 8px 18px; font-weight: 600; }
+.case-text h2 { font-size: var(--step-sub); margin-top: 16px; }
+.case-list li + li { margin-top: 0.8em; }
+.plates { display: flex; flex-wrap: wrap; gap: var(--gap); padding: var(--section) var(--m); background: var(--surface); color: var(--ink); align-items: flex-start; }
+.plate-large { flex: 1 1 100%; }
+.plate-large.is-phone { flex: 0 1 min(300px, 44%); }
+.plate-large.is-detail { flex: 1 1 calc(50% - var(--gap) / 2); }
+.plate-large figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+.next-folder { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 28px; padding: 64px var(--m) 0; background: var(--bg); font-weight: 600; }
+.next-folder .tab-name { background: var(--ink); color: var(--bg); }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+  .js .folder-text[data-reveal] { transition-delay: 90ms; }
+  .js .plate-large[data-reveal]:nth-child(even) { transition-delay: 80ms; }
+  .js .case-facts div:nth-child(2)[data-reveal] { transition-delay: 70ms; }
+  .js .case-facts div:nth-child(3)[data-reveal] { transition-delay: 140ms; }
+  .js .case-live[data-reveal] { transition-delay: 140ms; }
+  /* The project page's one image opens like a folder flap on load: clip from the top, picture settling.
+     A CSS animation, not an observer, so it can never be caught closed. */
+  .shutter { animation: shutter-open 900ms var(--ease-in-out) both; }
+  .shutter img { animation: shutter-settle 1300ms var(--ease-soft) both; }
+  @keyframes shutter-open { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+  @keyframes shutter-settle { from { transform: scale(1.08); } }
+
+  /* The signature move: the card holds the screen, then shrinks toward the corner where the stub waits. */
+  .home .hero { height: 165svh; }
+  @supports (animation-timeline: scroll()) {
+    .card { animation: card-away linear both; animation-timeline: scroll(root); animation-range: 0 65svh; }
+    .hero-ground { animation: ground-drift linear both; animation-timeline: scroll(root); animation-range: 0 100svh; }
+  }
+  @keyframes card-away { to { transform: translate(-6%, 6%) scale(0.72); } }
+  @keyframes ground-drift { from { transform: scale(1.06); } to { transform: scale(1); } }
+}
+
+/* ---------- phone ---------- */
+@media (max-width: 900px) {
+  .card { width: 100%; min-height: 72svh; padding: 22px; gap: 22px; }
+  .card-name { display: block; font-size: 9vw; }
+  .card-name span { display: inline; }
+  .card-blocks { grid-template-columns: 1fr; gap: 16px; }
+  .card-foot { grid-template-columns: 1fr; justify-items: stretch; }
+  .card-foot .button { width: 100%; }
+  .card-foot .link { justify-self: start; }
+  .card-credit { order: 3; }
+  .folder { position: static; min-height: 0; padding-bottom: 0; }
+  .folder-strip { height: auto; padding-top: 16px; flex-wrap: wrap; }
+  .tab { height: 40px; font-size: 1.25rem; }
+  .tab.tab-role { font-size: var(--step-small); }
+  .folder-cat { flex-basis: 100%; margin: 8px 0 0; }
+  .folder-body { display: flex; flex-direction: column; padding: 20px var(--m) 48px; min-height: 0; }
+  .folder-img img { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
+  .sheet { padding: 32px 24px calc(var(--r) * 2); }
+  .tearoff { margin: 32px -24px 0; padding: 16px 24px; flex-direction: column; align-items: stretch; }
+  .tearoff .button { width: 100%; }
+  .ptabs { margin-left: 0; }
+  .panel { grid-template-columns: 1fr; min-height: 0; }
+  .cells { grid-template-columns: 1fr; }
+  .cell { min-height: 60px; }
+  .proof { height: auto; max-height: 1000px; }
+  .guest-card { width: 92%; padding: 28px 28px 96px; transform: rotate(-1deg); aspect-ratio: auto; }
+  .tools { font-size: 1.0625rem; }
+  .coupon { grid-template-columns: 1fr; min-height: 0;
+    mask:
+      radial-gradient(var(--n) at 0 38%, #0000 97%, #000) left / 51% 100% no-repeat, /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+      radial-gradient(var(--n) at 100% 38%, #0000 97%, #000) right / 51% 100% no-repeat; } /* taste-skill-ignore: a hard-edged mask that cuts the paper shape, not a colour fill */
+  .coupon::before { left: calc(var(--n) + 10px); right: calc(var(--n) + 10px); top: calc(38% - 2.5px); bottom: auto; border-left: 0; border-top: 5px dotted var(--bg); }
+  .coupon-left, .coupon-right { padding: 32px 24px; }
+  .field input, .submit { height: 54px; }
+  .postcard { --s: 60px; grid-template-columns: 1fr; padding: 56px 24px 28px; }
+  .pc-address { padding-top: 0; }
+  .pc-message { padding-right: 84px; }
+  .stamp { top: 56px; right: 24px; width: 64px; padding: 4px; }
+  .case { display: flex; flex-direction: column; }
+  .case-hero { position: static; }
+  .plate-large.is-phone { flex-basis: calc(50% - var(--gap) / 2); }
+}
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .home .hero { height: 100svh; }
+}
