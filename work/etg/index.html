@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETG Platform, case study: Zohaib Ali Mughal</title>
+<meta name="description" content="A field-service platform for an Australian electrical, security and telecom group: admin, client, supplier and technician portals over one API, built to stop about $5k a week lost to unbilled supplier costs and to billing scheduled rather than actual hours.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0C0F">
+<link rel="canonical" href="https://career.zohaibmughal.dev/work/etg/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ETG Platform, case study: Zohaib Ali Mughal">
+<meta property="og:description" content="A field-service platform for an Australian electrical, security and telecom group: admin, client, supplier and technician portals over one API, built to stop about $5k a week lost to unbilled supplier costs and to billing scheduled rather than actual hours.">
+<meta property="og:url" content="https://career.zohaibmughal.dev/work/etg/">
+<meta property="og:image" content="https://career.zohaibmughal.dev/img/etg-hero.webp">
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg">
+<link rel="preload" href="../../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../icons.css">
+<link rel="stylesheet" href="../../style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body data-accent="etg">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../" translate="no">Zohaib Ali Mughal <span class="mono">/ Software engineer</span></a>
+    <div class="nav-links">
+      <a href="../../#experience">Experience</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<header class="cs-hero" id="top">
+  <div class="container">
+    <a class="cs-back" href="../../#etg"><span aria-hidden="true">&larr;</span> Career portfolio</a>
+    <span class="eyebrow"><span class="accent">Case study</span> &middot; Client product at Slidey LLC</span>
+    <h1>ETG Platform</h1>
+    <p class="cs-tagline">Field-service operations behind one decision gate.</p>
+    <p class="lede">A field-service platform for an Australian electrical, security and telecom group: admin, client, supplier and technician portals over one API, built to stop about $5k a week lost to unbilled supplier costs and to billing scheduled rather than actual hours.</p>
+    <div class="cs-meta"><div class="cs-meta-item"><span class="k">Role</span><span class="v">Software Engineer II, Slidey LLC</span></div><div class="cs-meta-item"><span class="k">Timeline</span><span class="v">May 2026 to present</span></div><div class="cs-meta-item"><span class="k">Client</span><span class="v">Australian electrical, security and telecom group</span></div><div class="cs-meta-item"><span class="k">Shape</span><span class="v">3 apps, 25 packages, 5 portals</span></div></div>
+    <ul class="links"><li><a href="https://portal.evolutiongroup.net.au" target="_blank" rel="noopener">portal.evolutiongroup.net.au</a><i class="ph ph-arrow-up-right" aria-hidden="true"></i></li></ul>
+    <div class="cs-hero-media" data-reveal><img class="cs-collage" src="../../img/etg-hero.webp" width="1560" height="1440" alt="ETG admin dashboard and technician app"></div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">01</span> &middot; The brief</span><h2>Stop margin leakage before work ships.</h2><p class="lede">The group runs two businesses that share customers at the same sites. Two costs drove the build: jobs billed from the calendar instead of clocked time, and supplier invoices that never got matched, an estimated $5k a week of leakage. The platform answers with enforcement rather than reporting: a job cannot reach &quot;ready to invoice&quot; until labour is reconciled to clocked time and supplier costs are matched to bank transactions.</p></div>
+    <div class="cs-points" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Five portals: operations back office, technician, client, subcontractor, and tokenised public links for quotes, invoices and feedback</span></li><li><span class="dia" aria-hidden="true"></span><span>Quote to cash: work requests, quotes, projects, field jobs, service tickets, receivables and retentions</span></li><li><span class="dia" aria-hidden="true"></span><span>Procurement and cost: purchase orders, supplier invoices and credit notes, stock and the bank feed</span></li><li><span class="dia" aria-hidden="true"></span><span>Workforce: calendar, availability, timesheets, compliance, award rules and field checklists</span></li><li><span class="dia" aria-hidden="true"></span><span>Governance: approvals, alerts, enforcement events, SLA targets and the audit log</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">02</span> &middot; How it is built</span><h2>One decision gate behind every workflow.</h2></div>
+    <ol class="cs-arch" aria-label="Architecture, top to bottom" data-reveal><li class="cs-layer"><span class="cs-layer-label">Clients</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Web portals</span><span class="s">Next.js 16, React 19, 148 page routes</span></li><li class="cs-node"><span class="t">Technician portal</span><span class="s">Jobs, closeout, timesheets</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">API</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Fastify 5, tRPC 11</span><span class="s">145 routers, Better Auth</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Gate</span><ul class="cs-nodes"><li class="cs-node hot"><span class="t">evaluateDecision()</span><span class="s">Dispatch, closeout and invoicing</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Data and jobs</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Prisma 7, PostgreSQL</span><span class="s">212 models, money as BigInt cents</span></li><li class="cs-node"><span class="t">BullMQ worker, Redis</span><span class="s">Reconciliation sweeps, dead-letter queue</span></li></ul></li></ol>
+    <div class="cs-cols" data-reveal>
+      <div><p class="cs-col-label">Stack</p><div class="stack-table"><div class="stackrow"><span class="stacklabel">Frontend</span><ul class="chips" translate="no"><li class="chip">Next.js</li><li class="chip">React</li><li class="chip">TanStack Query</li><li class="chip">Tailwind CSS</li></ul></div><div class="stackrow"><span class="stacklabel">Backend</span><ul class="chips" translate="no"><li class="chip">Fastify</li><li class="chip">tRPC</li><li class="chip">Prisma</li><li class="chip">Better Auth</li><li class="chip">Zod</li></ul></div><div class="stackrow"><span class="stacklabel">Data</span><ul class="chips" translate="no"><li class="chip">PostgreSQL</li><li class="chip">BullMQ</li><li class="chip">Redis</li></ul></div><div class="stackrow"><span class="stacklabel">Delivery</span><ul class="chips" translate="no"><li class="chip">Docker</li><li class="chip">GitHub Actions</li><li class="chip">Railway</li><li class="chip">Vercel</li></ul></div></div></div>
+      <div><p class="cs-col-label">Key decisions</p><ol class="cs-decisions"><li><span class="n">01</span><span>One pure function, evaluateDecision(), gates every dispatch, closeout and invoice transition and returns structured failure codes; every block and manager override is logged with who and why</span></li><li><span class="n">02</span><span>Layers enforced by lint: the frontend never imports Prisma and routers reach the database only through repositories, so a violation fails CI</span></li><li><span class="n">03</span><span>Two businesses that share customers modelled in the schema from the start, with ownership routing on service tickets</span></li><li><span class="n">04</span><span>Money held as BigInt integer cents on an ex-GST basis, so no financial path uses floating point</span></li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">03</span> &middot; My part</span><h2>What I worked on.</h2></div>
+    <div class="cs-part" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Designed a 25-package Turborepo (Next.js frontend, Fastify API, BullMQ worker): 145 tRPC routers and 1,000+ procedures over a 212-model Prisma schema (dispatch, timesheets, assets, quoting, billing); money as BigInt cents.</span></li><li><span class="dia" aria-hidden="true"></span><span>Enforcement-first decision engine: one pure, unit-testable gate checks every dispatch, closeout and invoice transition, returns structured failure codes, and logs every block and manager override (8 live checks on the dispatch calendar).</span></li><li><span class="dia" aria-hidden="true"></span><span>Scored two-hop reconciliation of bank transactions to supplier invoices; jobs cannot be invoiced until costs match.</span></li><li><span class="dia" aria-hidden="true"></span><span>Five role-scoped portals over one API across 148 page routes: internal operations, technician mobile, client and subcontractor self-service, and tokenised public links for quotes, invoices and feedback.</span></li><li><span class="dia" aria-hidden="true"></span><span>Supplier integration layer: typed adapters for eight external systems, including three trade portals with no public API (SAP Commerce and Magento storefronts) parsed server-side, plus ABN lookup and two payment feeds.</span></li><li><span class="dia" aria-hidden="true"></span><span>Credential security: Google Cloud KMS envelope encryption, Argon2 hashing, procedure-level permissions.</span></li><li><span class="dia" aria-hidden="true"></span><span>Infrastructure: docker-compose local parity, GitHub Actions CI building GHCR images, Railway and Vercel deploys with post-deploy smoke tests; 30,000+ tests across 2,200+ files.</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">04</span> &middot; Walkthrough</span><h2>Five portals, one rulebook.</h2></div>
+    
+    <div class="cs-walk" data-reveal><p class="cs-walk-label">Technician app, mobile</p><div class="cs-shots phones"><figure class="cs-shot"><div class="cs-phone"><img src="../../img/etg/app-accept.webp" width="400" height="867" alt="ETG technician accepting a job" loading="lazy"></div><figcaption class="cs-cap">Accept a job and read the site brief</figcaption></figure><figure class="cs-shot"><div class="cs-phone"><img src="../../img/etg/app-working.webp" width="400" height="867" alt="ETG technician working view" loading="lazy"></div><figcaption class="cs-cap">On the clock with evidence</figcaption></figure><figure class="cs-shot"><div class="cs-phone"><img src="../../img/etg/app-schedule.webp" width="400" height="867" alt="ETG technician schedule" loading="lazy"></div><figcaption class="cs-cap">Upcoming schedule</figcaption></figure></div></div><div class="cs-walk" data-reveal><p class="cs-walk-label">Operations, web</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/etg/admin-calendar.webp" width="1200" height="622" alt="ETG scheduling calendar" loading="lazy"></div><figcaption class="cs-cap">Scheduling calendar with dispatch checks</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/etg/admin-dashboard.webp" width="1200" height="622" alt="ETG admin dashboard" loading="lazy"></div><figcaption class="cs-cap">Operations dashboard</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/etg/admin-invoice.webp" width="1200" height="622" alt="ETG invoicing screen" loading="lazy"></div><figcaption class="cs-cap">Invoicing</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/etg/tech-web-job.webp" width="1200" height="622" alt="ETG technician web portal" loading="lazy"></div><figcaption class="cs-cap">Technician web portal: job view</figcaption></figure></div></div>
+  </div>
+</section>
+
+<section class="cs-impact">
+  <div class="container cs-impact-grid" data-reveal>
+    <div class="cs-metrics"><div class="cs-metric"><span class="cs-num">$5k</span><span class="cs-mcap">a week of leakage it is built to stop</span></div><div class="cs-metric"><span class="cs-num">1,000+</span><span class="cs-mcap">tRPC procedures</span></div><div class="cs-metric"><span class="cs-num">212</span><span class="cs-mcap">Prisma models</span></div><div class="cs-metric"><span class="cs-num">30K+</span><span class="cs-mcap">automated tests</span></div></div>
+    <p>The same gate runs behind all five portals, so the field, the client and the back office see one state for every job. Counted from the code on 21 September 2026: 145 routers, 1,063 procedures, 212 models, 148 page routes, and 30,000+ tests across 2,200+ files.</p>
+  </div>
+</section>
+
+<section class="cs-next-wrap">
+  <div class="container">
+    <a class="cs-next" data-accent="plexor" href="../../work/plexor/" data-reveal>
+      <span><span class="k">Next case study</span><span class="cs-next-title">Plexor</span></span>
+      <span class="cs-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="container" data-reveal>
+    <span class="eyebrow">Contact</span>
+    <h2>Open to full-time roles.</h2>
+    <p class="lede">Remote in any time zone, or on-site with visa sponsorship. Notice period 15 days.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:z.mughal.24648@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>z.mughal.24648@gmail.com</a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" download><i class="ph ph-download-simple" aria-hidden="true"></i>Download CV</a>
+    </div>
+    <div class="profile-links">
+      <span class="profile-label">Also on</span>
+      <a class="plink" href="https://github.com/Zohaib24648" target="_blank" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i><span>GitHub</span></a>
+      <a class="plink" href="https://linkedin.com/in/zohaibmughal24648" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo" aria-hidden="true"></i><span>LinkedIn</span></a>
+    </div>
+    <div class="contact-meta"><span>Zohaib Ali Mughal</span><span>Karachi, Pakistan, UTC+5</span></div>
+  </div>
+</footer>
+<script src="../../site.js" defer></script>
+</body>
+</html>

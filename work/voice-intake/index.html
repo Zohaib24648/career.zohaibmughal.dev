@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice AI Patient-Intake Agent, case study: Zohaib Ali Mughal</title>
+<meta name="description" content="A phone agent that registers new patients over a U.S. number in English or Spanish, and saves nothing until the caller confirms a read-back.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0C0F">
+<link rel="canonical" href="https://career.zohaibmughal.dev/work/voice-intake/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Voice AI Patient-Intake Agent, case study: Zohaib Ali Mughal">
+<meta property="og:description" content="A phone agent that registers new patients over a U.S. number in English or Spanish, and saves nothing until the caller confirms a read-back.">
+<meta property="og:url" content="https://career.zohaibmughal.dev/work/voice-intake/">
+<meta property="og:image" content="https://career.zohaibmughal.dev/img/voice-intake/dashboard-patients.webp">
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg">
+<link rel="preload" href="../../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../icons.css">
+<link rel="stylesheet" href="../../style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body data-accent="voice">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../" translate="no">Zohaib Ali Mughal <span class="mono">/ Software engineer</span></a>
+    <div class="nav-links">
+      <a href="../../#experience">Experience</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<header class="cs-hero" id="top">
+  <div class="container">
+    <a class="cs-back" href="../../#p-voice-intake"><span aria-hidden="true">&larr;</span> Career portfolio</a>
+    <span class="eyebrow"><span class="accent">Case study</span> &middot; Personal project</span>
+    <h1>Voice AI Patient-Intake Agent</h1>
+    <p class="cs-tagline">Patient registration by phone, with nothing saved before a read-back.</p>
+    <p class="lede">A phone agent that registers new patients over a U.S. number in English or Spanish, and saves nothing until the caller confirms a read-back.</p>
+    <div class="cs-meta"><div class="cs-meta-item"><span class="k">Role</span><span class="v">Personal project</span></div><div class="cs-meta-item"><span class="k">Built</span><span class="v">Oct 2026</span></div><div class="cs-meta-item"><span class="k">Shape</span><span class="v">LLM agent, REST API, dashboard</span></div><div class="cs-meta-item"><span class="k">Quality</span><span class="v">53 passing tests</span></div><div class="cs-meta-item"><span class="k">Hosting</span><span class="v">Railway and Vercel</span></div></div>
+    <ul class="links"><li><a href="https://github.com/Zohaib24648/voice-intake" target="_blank" rel="noopener">Code on GitHub</a><i class="ph ph-arrow-up-right" aria-hidden="true"></i></li></ul>
+    <div class="cs-hero-media" data-reveal><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/dashboard-patients.webp" width="1200" height="691" alt="Patient registry dashboard listing patients registered by phone"></div></div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">01</span> &middot; The brief</span><h2>Registration by phone, with no half-saved records.</h2><p class="lede">Callers give their details to a voice agent instead of a form. The hard parts are accuracy and safety: names spelled right, bad dates caught, and no duplicate or half-written patient when a call drops or the network stalls.</p></div>
+    <div class="cs-points" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Names spelled out, and each value confirmed once</span></li><li><span class="dia" aria-hidden="true"></span><span>Dates, phone numbers, states and ZIP codes checked twice: Zod in the API and CHECK constraints in Postgres</span></li><li><span class="dia" aria-hidden="true"></span><span>Returning callers found by phone number, so their record is updated instead of duplicated</span></li><li><span class="dia" aria-hidden="true"></span><span>Mock appointment booking from open slots, where a unique time stops double booking</span></li><li><span class="dia" aria-hidden="true"></span><span>English and Spanish, with a transcript and summary stored for each call and linked to the patient</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">02</span> &middot; How it is built</span><h2>One validation contract for the agent, the API and the database.</h2></div>
+    <ol class="cs-arch" aria-label="Architecture, top to bottom" data-reveal><li class="cs-layer"><span class="cs-layer-label">Caller</span><ul class="cs-nodes"><li class="cs-node"><span class="t">U.S. phone number</span><span class="s">Phone call</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Voice</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Retell AI</span><span class="s">Telephony, speech to text</span></li><li class="cs-node hot"><span class="t">LLM agent</span><span class="s">14-section prompt, 5 tools</span></li><li class="cs-node"><span class="t">ElevenLabs</span><span class="s">Text to speech</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">API</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Signed webhooks</span><span class="s">HMAC check on the raw body</span></li><li class="cs-node"><span class="t">Fastify, Zod</span><span class="s">Tool handlers, REST routes</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Data</span><ul class="cs-nodes"><li class="cs-node"><span class="t">PostgreSQL, Drizzle</span><span class="s">Patients, calls, appointments</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Dashboard</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Next.js</span><span class="s">Patients and their calls</span></li></ul></li></ol>
+    <div class="cs-cols" data-reveal>
+      <div><p class="cs-col-label">Stack</p><div class="stack-table"><div class="stackrow"><span class="stacklabel">Voice</span><ul class="chips" translate="no"><li class="chip">Retell AI</li><li class="chip">OpenAI model</li><li class="chip">ElevenLabs</li></ul></div><div class="stackrow"><span class="stacklabel">Backend</span><ul class="chips" translate="no"><li class="chip">Fastify</li><li class="chip">Zod</li><li class="chip">Drizzle</li></ul></div><div class="stackrow"><span class="stacklabel">Data</span><ul class="chips" translate="no"><li class="chip">PostgreSQL</li></ul></div><div class="stackrow"><span class="stacklabel">Frontend</span><ul class="chips" translate="no"><li class="chip">Next.js</li><li class="chip">Tailwind CSS</li></ul></div><div class="stackrow"><span class="stacklabel">Quality</span><ul class="chips" translate="no"><li class="chip">Vitest</li><li class="chip">PGlite</li></ul></div><div class="stackrow"><span class="stacklabel">Hosting</span><ul class="chips" translate="no"><li class="chip">Railway</li><li class="chip">Vercel</li><li class="chip">Docker</li></ul></div></div></div>
+      <div><p class="cs-col-label">Key decisions</p><ol class="cs-decisions"><li><span class="n">01</span><span>The model changes state only through five tools, and every tool validates with the same Zod schemas as the REST API</span></li><li><span class="n">02</span><span>Nothing is written before a confirmed read-back, and write tools never retry, so one confirmation cannot create two records</span></li><li><span class="n">03</span><span>Every tool call and call event is signature-checked over the raw body before any handler runs</span></li><li><span class="n">04</span><span>Prompt, tool schemas and agent settings live in the repo and are provisioned by an idempotent sync script</span></li><li><span class="n">05</span><span>Integration tests run the real migrations on PGlite and pin the model&#x27;s tool schemas to the API&#x27;s</span></li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">03</span> &middot; My part</span><h2>What I worked on.</h2></div>
+    <div class="cs-part" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Phone agent that registers new patients over a U.S. number in English or Spanish: a Retell LLM agent with a 14-section prompt and 5 tool-calling functions, saving to Postgres only after the caller confirms a read-back.</span></li><li><span class="dia" aria-hidden="true"></span><span>Fastify and Zod API, Drizzle on Postgres and a Next.js dashboard; the agent&#x27;s tools and the REST API share one validation schema, webhooks are signature-checked, and 53 tests run against a real Postgres engine (PGlite). Deployed on Railway and Vercel.</span></li><li><span class="dia" aria-hidden="true"></span><span>Prompt, tool schemas and agent settings live in the repo and are provisioned by an idempotent sync script; tests keep the model&#x27;s tool schemas in step with the API and forbid retries on write tools so one confirmation can never create two records.</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">04</span> &middot; Walkthrough</span><h2>Inside the product.</h2></div>
+    <p class="cs-note">Screenshots from a local run on fictional demo data.</p>
+    <div class="cs-walk" data-reveal><p class="cs-walk-label">Patient registry, Next.js dashboard</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/patient-record.webp" width="1200" height="691" alt="Patient record with identity contact address and insurance" loading="lazy"></div><figcaption class="cs-cap">One patient record, as the agent saved it</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/call-transcript.webp" width="1200" height="691" alt="Call transcript with name spelling and read-back" loading="lazy"></div><figcaption class="cs-cap">Call summary and transcript, linked to the record</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/call-spanish.webp" width="1200" height="691" alt="Spanish-language call transcript" loading="lazy"></div><figcaption class="cs-cap">Caller switches to Spanish mid-call</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/call-correction.webp" width="1200" height="691" alt="Call where the caller corrects a digit and uses the keypad" loading="lazy"></div><figcaption class="cs-cap">A corrected digit and keypad entry for an ID</figcaption></figure></div></div><div class="cs-walk" data-reveal><p class="cs-walk-label">Agent and API</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/code-register-tool.webp" width="1200" height="691" alt="register_patient tool definition with max_retry 0" loading="lazy"></div><figcaption class="cs-cap">The register tool: no retries, confirmed fields only</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/code-system-prompt.webp" width="1200" height="691" alt="System prompt section on confirmation before saving" loading="lazy"></div><figcaption class="cs-cap">Prompt rules for read-back and saving</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/voice-intake/api-docs.webp" width="1200" height="691" alt="OpenAPI documentation for the patient endpoints" loading="lazy"></div><figcaption class="cs-cap">OpenAPI docs generated from the Zod schemas</figcaption></figure></div></div>
+  </div>
+</section>
+
+<section class="cs-impact">
+  <div class="container cs-impact-grid" data-reveal>
+    <div class="cs-metrics"><div class="cs-metric"><span class="cs-num">5</span><span class="cs-mcap">tool-calling functions</span></div><div class="cs-metric"><span class="cs-num">53</span><span class="cs-mcap">passing tests</span></div><div class="cs-metric"><span class="cs-num">14</span><span class="cs-mcap">prompt sections</span></div></div>
+    <p>The agent can only touch data through validated tools: bad input comes back as field-level errors that the agent asks about again, and a dropped call leaves nothing behind.</p>
+  </div>
+</section>
+
+<section class="cs-next-wrap">
+  <div class="container">
+    <a class="cs-next" data-accent="trading" href="../../work/trading-system/" data-reveal>
+      <span><span class="k">Next case study</span><span class="cs-next-title">Automated Crypto-Derivatives Trading System</span></span>
+      <span class="cs-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="container" data-reveal>
+    <span class="eyebrow">Contact</span>
+    <h2>Open to full-time roles.</h2>
+    <p class="lede">Remote in any time zone, or on-site with visa sponsorship. Notice period 15 days.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:z.mughal.24648@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>z.mughal.24648@gmail.com</a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" download><i class="ph ph-download-simple" aria-hidden="true"></i>Download CV</a>
+    </div>
+    <div class="profile-links">
+      <span class="profile-label">Also on</span>
+      <a class="plink" href="https://github.com/Zohaib24648" target="_blank" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i><span>GitHub</span></a>
+      <a class="plink" href="https://linkedin.com/in/zohaibmughal24648" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo" aria-hidden="true"></i><span>LinkedIn</span></a>
+    </div>
+    <div class="contact-meta"><span>Zohaib Ali Mughal</span><span>Karachi, Pakistan, UTC+5</span></div>
+  </div>
+</footer>
+<script src="../../site.js" defer></script>
+</body>
+</html>

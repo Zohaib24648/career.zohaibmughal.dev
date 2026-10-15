@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automated Crypto-Derivatives Trading System, case study: Zohaib Ali Mughal</title>
+<meta name="description" content="An event-driven TypeScript system that turns candle signals into risk-checked orders, with every trading limit in one pure function.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0C0F">
+<link rel="canonical" href="https://career.zohaibmughal.dev/work/trading-system/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automated Crypto-Derivatives Trading System, case study: Zohaib Ali Mughal">
+<meta property="og:description" content="An event-driven TypeScript system that turns candle signals into risk-checked orders, with every trading limit in one pure function.">
+<meta property="og:url" content="https://career.zohaibmughal.dev/work/trading-system/">
+<meta property="og:image" content="https://career.zohaibmughal.dev/img/trading-system/traders-registry.webp">
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg">
+<link rel="preload" href="../../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../icons.css">
+<link rel="stylesheet" href="../../style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body data-accent="trading">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../" translate="no">Zohaib Ali Mughal <span class="mono">/ Software engineer</span></a>
+    <div class="nav-links">
+      <a href="../../#experience">Experience</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<header class="cs-hero" id="top">
+  <div class="container">
+    <a class="cs-back" href="../../#p-trading-system"><span aria-hidden="true">&larr;</span> Career portfolio</a>
+    <span class="eyebrow"><span class="accent">Case study</span> &middot; Personal project</span>
+    <h1>Automated Crypto-Derivatives Trading System</h1>
+    <p class="cs-tagline">Signals in, risk-checked orders out.</p>
+    <p class="lede">An event-driven TypeScript system that turns candle signals into risk-checked orders, with every trading limit in one pure function.</p>
+    <div class="cs-meta"><div class="cs-meta-item"><span class="k">Role</span><span class="v">Personal project</span></div><div class="cs-meta-item"><span class="k">Timeline</span><span class="v">May 2026 to Aug 2026</span></div><div class="cs-meta-item"><span class="k">Shape</span><span class="v">4 services, 8 shared packages</span></div><div class="cs-meta-item"><span class="k">Quality</span><span class="v">3,810 test cases</span></div><div class="cs-meta-item"><span class="k">Code</span><span class="v">Private repository</span></div></div>
+    
+    <div class="cs-hero-media" data-reveal><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/traders-registry.webp" width="1200" height="691" alt="Trader registry with presence feeds and signal outcomes"></div></div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">01</span> &middot; The brief</span><h2>Strategies that can only send signals.</h2><p class="lede">Strategies should be cheap to write and impossible to let loose: they publish signals and nothing else, while one service owns sizing, limits and orders.</p></div>
+    <div class="cs-points" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>One market-data ingester fetches 1-minute candles and derives every higher timeframe itself</span></li><li><span class="dia" aria-hidden="true"></span><span>Strategy processes hold no keys and never size or place orders; they only write signals to their own stream</span></li><li><span class="dia" aria-hidden="true"></span><span>One execution service admits, deduplicates and risk-checks each signal before placing orders and tracking fills</span></li><li><span class="dia" aria-hidden="true"></span><span>The Next.js dashboard reaches the API server to server, so the browser never holds the access token</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">02</span> &middot; How it is built</span><h2>Streams between processes, one gate before any order.</h2></div>
+    <ol class="cs-arch" aria-label="Architecture, top to bottom" data-reveal><li class="cs-layer"><span class="cs-layer-label">Market data</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Ingester</span><span class="s">1m candles, derived timeframes</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Streams</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Redis Streams</span><span class="s">Candles in, signals out</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Strategies</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Trader processes</span><span class="s">Signals only, no keys</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Execution</span><ul class="cs-nodes"><li class="cs-node hot"><span class="t">Risk gate</span><span class="s">One pure function</span></li><li class="cs-node"><span class="t">Orders and fills</span><span class="s">Single instance, advisory lock</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Control</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Fastify, tRPC</span><span class="s">API, realtime</span></li><li class="cs-node"><span class="t">Next.js</span><span class="s">Dashboard</span></li></ul></li></ol>
+    <div class="cs-cols" data-reveal>
+      <div><p class="cs-col-label">Stack</p><div class="stack-table"><div class="stackrow"><span class="stacklabel">Language</span><ul class="chips" translate="no"><li class="chip">TypeScript</li><li class="chip">Node.js</li><li class="chip">pnpm</li><li class="chip">Turborepo</li></ul></div><div class="stackrow"><span class="stacklabel">Services</span><ul class="chips" translate="no"><li class="chip">Fastify</li><li class="chip">tRPC</li><li class="chip">Redis Streams</li></ul></div><div class="stackrow"><span class="stacklabel">Data</span><ul class="chips" translate="no"><li class="chip">Prisma</li><li class="chip">PostgreSQL</li><li class="chip">zod</li></ul></div><div class="stackrow"><span class="stacklabel">Frontend</span><ul class="chips" translate="no"><li class="chip">Next.js</li><li class="chip">React</li></ul></div><div class="stackrow"><span class="stacklabel">Quality</span><ul class="chips" translate="no"><li class="chip">Vitest</li><li class="chip">Docker Compose</li></ul></div></div></div>
+      <div><p class="cs-col-label">Key decisions</p><ol class="cs-decisions"><li><span class="n">01</span><span>Only the execution service holds exchange keys and places orders</span></li><li><span class="n">02</span><span>Every limit (sizing, per-coin slots, four exposure ceilings, hedge reserve, margin) sits in one pure risk function shared by the order gate and the settings screen</span></li><li><span class="n">03</span><span>A priority-laned rate-limit budget keeps order traffic ahead of market data</span></li><li><span class="n">04</span><span>The wire format is defined once in zod and published as JSON Schema, with a drift test and cross-language parity fixtures</span></li><li><span class="n">05</span><span>Built with an AI coding-agent workflow I set up: 7 layer-author and 4 read-only auditor agents with fenced responsibilities</span></li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">03</span> &middot; My part</span><h2>What I worked on.</h2></div>
+    <div class="cs-part" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Event-driven TypeScript monorepo (4 services, 8 shared packages): strategy processes publish signals over Redis Streams to one execution service, the only component that holds exchange keys and places orders.</span></li><li><span class="dia" aria-hidden="true"></span><span>Every trading limit (sizing, per-coin slots, four exposure ceilings, hedge reserve, margin) in one pure risk function shared by the order gate and the settings screen; a priority-laned rate-limit budget puts orders ahead of market data.</span></li><li><span class="dia" aria-hidden="true"></span><span>Wire format defined once in zod and published as JSON Schema with a drift test and cross-language parity fixtures, so strategies can be written in any language.</span></li><li><span class="dia" aria-hidden="true"></span><span>Built with an AI coding-agent workflow I set up: 7 layer-author and 4 read-only auditor agents with fenced responsibilities; 164 test files and 3,810 test cases.</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">04</span> &middot; Walkthrough</span><h2>Inside the product.</h2></div>
+    <p class="cs-note">Screenshots from a local run on fictional demo data.</p>
+    <div class="cs-walk" data-reveal><p class="cs-walk-label">Control plane, Next.js dashboard</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/risk-limits.webp" width="1200" height="691" alt="Risk settings with per-coin slots and exposure ceilings" loading="lazy"></div><figcaption class="cs-cap">Trade slots, exposure ceilings and hedge reserve</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/per-coin-policy.webp" width="1200" height="691" alt="Per-coin policy table" loading="lazy"></div><figcaption class="cs-cap">Per-coin direction and limit exceptions</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/trader-config.webp" width="1200" height="691" alt="Trader configuration dialog" loading="lazy"></div><figcaption class="cs-cap">Per-trader parameters and take-profit cap</figcaption></figure></div></div><div class="cs-walk" data-reveal><p class="cs-walk-label">Core code</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/code-risk-function.webp" width="1200" height="691" alt="evaluateIntent risk function excerpt" loading="lazy"></div><figcaption class="cs-cap">One pure function checks every exposure ceiling</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/trading-system/code-wire-contract.webp" width="1200" height="691" alt="Zod schemas for the signal messages" loading="lazy"></div><figcaption class="cs-cap">Signal wire contract defined once in zod</figcaption></figure></div></div>
+  </div>
+</section>
+
+<section class="cs-impact">
+  <div class="container cs-impact-grid" data-reveal>
+    <div class="cs-metrics"><div class="cs-metric"><span class="cs-num">4</span><span class="cs-mcap">services</span></div><div class="cs-metric"><span class="cs-num">8</span><span class="cs-mcap">shared packages</span></div><div class="cs-metric"><span class="cs-num">3,810</span><span class="cs-mcap">test cases</span></div></div>
+    <p>Adding a strategy means writing a signal rule, not touching orders or limits: the risk function and the execution service are the only path to an order.</p>
+  </div>
+</section>
+
+<section class="cs-next-wrap">
+  <div class="container">
+    <a class="cs-next" data-accent="faculty" href="../../work/faculty-reviews/" data-reveal>
+      <span><span class="k">Next case study</span><span class="cs-next-title">Faculty Reviews, Course Review Platform</span></span>
+      <span class="cs-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="container" data-reveal>
+    <span class="eyebrow">Contact</span>
+    <h2>Open to full-time roles.</h2>
+    <p class="lede">Remote in any time zone, or on-site with visa sponsorship. Notice period 15 days.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:z.mughal.24648@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>z.mughal.24648@gmail.com</a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" download><i class="ph ph-download-simple" aria-hidden="true"></i>Download CV</a>
+    </div>
+    <div class="profile-links">
+      <span class="profile-label">Also on</span>
+      <a class="plink" href="https://github.com/Zohaib24648" target="_blank" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i><span>GitHub</span></a>
+      <a class="plink" href="https://linkedin.com/in/zohaibmughal24648" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo" aria-hidden="true"></i><span>LinkedIn</span></a>
+    </div>
+    <div class="contact-meta"><span>Zohaib Ali Mughal</span><span>Karachi, Pakistan, UTC+5</span></div>
+  </div>
+</footer>
+<script src="../../site.js" defer></script>
+</body>
+</html>

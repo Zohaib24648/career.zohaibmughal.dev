@@ -159,6 +159,99 @@ section { padding-block: clamp(72px, 9vw, 130px); }
 .plink:hover { border-color: var(--text-3); }
 .contact-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: clamp(40px, 6vw, 64px); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
 
+/* ---------- Case-study pages (/work/<slug>/), in the product's colour (body data-accent) ---------- */
+.cs-hero { padding-top: clamp(120px, 16vh, 170px); padding-bottom: 0; }
+.cs-hero .container { display: grid; gap: 22px; }
+.cs-back { width: fit-content; font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); transition: color .15s ease; }
+.cs-back:hover { color: var(--text); }
+.cs-hero h1 { font-size: clamp(40px, 6.4vw, 78px); max-width: 14em; }
+.cs-tagline { max-width: 30em; font-family: var(--font-head); font-weight: 500; font-size: clamp(21px, 2.6vw, 30px); letter-spacing: -0.02em; line-height: 1.2; color: var(--accent); text-wrap: balance; }
+.cs-meta { display: flex; flex-wrap: wrap; gap: 18px clamp(24px, 4vw, 56px); margin-top: 8px; padding-block: 24px; border-block: 1px solid var(--line); }
+.cs-meta-item { display: grid; gap: 6px; }
+.cs-meta-item .k { font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.cs-meta-item .v { font-family: var(--font-head); font-weight: 500; font-size: 16px; }
+.cs-hero-media { margin-top: clamp(28px, 4vw, 52px); }
+.cs-collage { width: 100%; max-width: 920px; margin-inline: auto; filter: drop-shadow(0 40px 80px color-mix(in srgb, var(--accent) 22%, transparent)); }
+.cs-hero-media .cs-frame { max-width: 1100px; margin-inline: auto; }
+.cs-tight { padding-top: 0; }
+.cs-points { max-width: 52em; }
+
+/* Architecture: layers from top to bottom, joined by arrows */
+.cs-arch { display: grid; gap: 30px; margin-bottom: clamp(40px, 6vw, 64px); }
+.cs-layer { position: relative; display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 24px; align-items: center; }
+.cs-layer + .cs-layer::before { content: ""; position: absolute; top: -25px; left: calc(77px + 50%); width: 1px; height: 17px; background: var(--line-2); }
+.cs-layer + .cs-layer::after { content: ""; position: absolute; top: -14px; left: calc(77px + 50% - 3px); width: 7px; height: 7px; border-right: 1px solid var(--accent); border-bottom: 1px solid var(--accent); transform: rotate(45deg); }
+.cs-layer-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
+.cs-nodes { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.cs-node { flex: 0 1 280px; min-width: 0; display: grid; gap: 6px; padding: 16px 18px 17px; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 14px; }
+.cs-node .t { font-family: var(--font-head); font-weight: 600; font-size: 16px; overflow-wrap: anywhere; }
+.cs-node .s { font-family: var(--font-mono); font-size: 13px; color: var(--text-3); }
+.cs-node.hot { border-color: color-mix(in srgb, var(--accent) 60%, var(--line-2)); background: color-mix(in srgb, var(--accent) 8%, var(--bg-2)); box-shadow: 0 14px 34px var(--accent-soft); }
+.cs-node.hot .s { color: color-mix(in srgb, var(--accent) 75%, #FFFFFF); }
+.cs-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 5vw, 72px); align-items: start; }
+.cs-col-label { margin-bottom: 18px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.cs-cols .stackrow { grid-template-columns: 120px minmax(0, 1fr); padding-block: 16px; }
+.cs-decisions li { display: flex; gap: 16px; padding-block: 14px; border-top: 1px solid var(--line); }
+.cs-decisions li:last-child { border-bottom: 1px solid var(--line); }
+.cs-decisions .n { flex: none; padding-top: 3px; font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
+.cs-decisions li span:last-child { color: var(--text-2); font-size: 16px; line-height: 1.55; }
+
+/* My part: the CV bank lines for this entry */
+.cs-part { display: grid; gap: 16px; max-width: 60em; }
+.cs-part-label { margin-top: 8px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
+
+/* Walkthrough: browser frames and phones */
+.cs-note { margin-top: -24px; font-size: 15px; color: var(--text-3); }
+.cs-walk { margin-top: clamp(36px, 5vw, 56px); }
+.cs-walk-label { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.cs-walk-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.cs-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3.5vw, 40px); align-items: start; }
+.cs-shots.phones { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1000px; }
+.cs-shot { margin: 0; min-width: 0; }
+.cs-frame { overflow: hidden; border-radius: 14px; background: var(--bg-3); border: 1px solid var(--line-2); box-shadow: 0 30px 60px rgba(0, 0, 0, .45); }
+.cs-frame-bar { display: flex; align-items: center; gap: 7px; height: 32px; padding: 0 14px; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.cs-frame-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
+.cs-phone { padding: 10px; border-radius: 34px; background: #050507; border: 1px solid var(--line-2); box-shadow: 0 30px 60px rgba(0, 0, 0, .5); }
+.cs-phone img { border-radius: 24px; }
+.cs-cap { display: flex; gap: 12px; margin-top: 14px; font-size: 15px; line-height: 1.5; color: var(--text-2); }
+.cs-cap::before { content: ""; flex: none; width: 14px; height: 2px; margin-top: 11px; background: var(--accent); }
+
+/* Outcome band */
+.cs-impact { background: var(--bg-2); border-block: 1px solid var(--line); }
+.cs-impact-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(36px, 6vw, 80px); align-items: center; }
+.cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.cs-metrics:has(> :nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cs-metric { display: grid; gap: 8px; align-content: start; padding-left: 18px; border-left: 1px solid var(--line-2); }
+.cs-num { font-family: var(--font-head); font-weight: 600; font-size: clamp(34px, 3.8vw, 48px); line-height: 1; letter-spacing: -0.02em; color: var(--accent); white-space: nowrap; }
+.cs-num small { font-family: var(--font-mono); font-size: 13px; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); vertical-align: middle; }
+.cs-mcap { font-family: var(--font-mono); font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: var(--text-3); }
+.cs-impact p { font-size: 18px; line-height: 1.65; color: var(--text-2); }
+
+/* Next case study, in that product's colour */
+.cs-next-wrap { padding-bottom: clamp(56px, 7vw, 90px); }
+.cs-next { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: clamp(26px, 4vw, 42px); border: 1px solid var(--line); border-radius: 20px; background: var(--bg-2); transition: border-color .25s ease; }
+.cs-next:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.cs-next .k { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); }
+.cs-next-title { display: block; font-family: var(--font-head); font-weight: 600; font-size: clamp(22px, 2.6vw, 32px); letter-spacing: -0.02em; line-height: 1.15; text-wrap: balance; }
+.cs-arrow { font-family: var(--font-head); font-size: 34px; color: var(--accent); }
+
+@media (max-width: 900px) {
+  .cs-cols, .cs-impact-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .cs-shots { grid-template-columns: minmax(0, 1fr); }
+  .cs-shots.phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-layer { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .cs-layer + .cs-layer::before { left: 50%; }
+  .cs-layer + .cs-layer::after { left: calc(50% - 3px); }
+  .cs-node { flex: 1 1 100%; }
+  .cs-cols .stackrow { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+}
+@media (max-width: 480px) {
+  .cs-shots.phones { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .cs-shots.phones .cs-shot { max-width: 300px; }
+}
+
 /* ---------- Motion: sections ease in once; all of it off for reduced motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1), border-color .25s ease; }

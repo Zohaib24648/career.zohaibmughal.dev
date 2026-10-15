@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sportefy, case study: Zohaib Ali Mughal</title>
+<meta name="description" content="A sports booking and matchmaking app live in Pakistan: Flutter on both stores, a Next.js admin panel and a NestJS API.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0C0F">
+<link rel="canonical" href="https://career.zohaibmughal.dev/work/sportefy/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sportefy, case study: Zohaib Ali Mughal">
+<meta property="og:description" content="A sports booking and matchmaking app live in Pakistan: Flutter on both stores, a Next.js admin panel and a NestJS API.">
+<meta property="og:url" content="https://career.zohaibmughal.dev/work/sportefy/">
+<meta property="og:image" content="https://career.zohaibmughal.dev/img/sportefy-hero.webp">
+<link rel="icon" type="image/svg+xml" href="../../img/favicon.svg">
+<link rel="preload" href="../../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../icons.css">
+<link rel="stylesheet" href="../../style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body data-accent="sportefy">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../" translate="no">Zohaib Ali Mughal <span class="mono">/ Software engineer</span></a>
+    <div class="nav-links">
+      <a href="../../#experience">Experience</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<header class="cs-hero" id="top">
+  <div class="container">
+    <a class="cs-back" href="../../#sportefy"><span aria-hidden="true">&larr;</span> Career portfolio</a>
+    <span class="eyebrow"><span class="accent">Case study</span> &middot; Client product at Slidey LLC</span>
+    <h1>Sportefy</h1>
+    <p class="cs-tagline">Book a court, find a match, pay from the app.</p>
+    <p class="lede">A sports booking and matchmaking app live in Pakistan: Flutter on both stores, a Next.js admin panel and a NestJS API.</p>
+    <div class="cs-meta"><div class="cs-meta-item"><span class="k">Role</span><span class="v">Trainee Software Engineer, Slidey LLC</span></div><div class="cs-meta-item"><span class="k">My part</span><span class="v">Flutter app, admin panel and API</span></div><div class="cs-meta-item"><span class="k">Timeline</span><span class="v">Nov 2024 to Feb 2025</span></div><div class="cs-meta-item"><span class="k">Status</span><span class="v">Live on the App Store and Play Store</span></div></div>
+    <ul class="links"><li><a href="https://apps.apple.com/us/app/sportefy/id6753986088" target="_blank" rel="noopener">App Store</a><i class="ph ph-arrow-up-right" aria-hidden="true"></i></li><li><a href="https://play.google.com/store/apps/details?id=com.sportefypakistan.app" target="_blank" rel="noopener">Play Store</a><i class="ph ph-arrow-up-right" aria-hidden="true"></i></li></ul>
+    <div class="cs-hero-media" data-reveal><img class="cs-collage" src="../../img/sportefy-hero.webp" width="1560" height="1440" alt="Sportefy app and admin dashboard"></div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">01</span> &middot; The brief</span><h2>Venues, matches and payments in one app.</h2><p class="lede">Sports facilities in Pakistan ran on phone calls, WhatsApp and paper ledgers, with double bookings and untracked cash. Sportefy gives players venue discovery, booking, matches and a wallet in one app, and gives venue operators and platform staff a dashboard to run it, all on one versioned API that older app installs keep working against.</p></div>
+    <div class="cs-points" data-reveal><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Players: find venues, book slots, pay from a wallet or at the venue, join matches and check in with a QR scan</span></li><li><span class="dia" aria-hidden="true"></span><span>Venue operators: facilities, operating hours, slot pricing, staff access and walk-in bookings</span></li><li><span class="dia" aria-hidden="true"></span><span>Platform staff: reporting, payment checks, promo codes, memberships and an audit trail</span></li><li><span class="dia" aria-hidden="true"></span><span>Realtime match chat and notifications on Supabase Realtime with row-level security</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">02</span> &middot; How it is built</span><h2>Two clients, one versioned contract.</h2></div>
+    <ol class="cs-arch" aria-label="Architecture, top to bottom" data-reveal><li class="cs-layer"><span class="cs-layer-label">Clients</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Flutter app</span><span class="s">iOS and Android, BLoC</span></li><li class="cs-node"><span class="t">Next.js admin</span><span class="s">Operations dashboard</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Contract</span><ul class="cs-nodes"><li class="cs-node hot"><span class="t">/v1 REST</span><span class="s">Additive only, OpenAPI drift gates</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Core</span><ul class="cs-nodes"><li class="cs-node"><span class="t">NestJS</span><span class="s">48 domain modules, layered use-cases</span></li></ul></li><li class="cs-layer"><span class="cs-layer-label">Data</span><ul class="cs-nodes"><li class="cs-node"><span class="t">Prisma, PostgreSQL</span><span class="s">On Supabase</span></li><li class="cs-node"><span class="t">Supabase Realtime</span><span class="s">Match chat, RLS</span></li><li class="cs-node"><span class="t">Paymob</span><span class="s">Behind a gateway adapter</span></li></ul></li></ol>
+    <div class="cs-cols" data-reveal>
+      <div><p class="cs-col-label">Stack</p><div class="stack-table"><div class="stackrow"><span class="stacklabel">Mobile</span><ul class="chips" translate="no"><li class="chip">Flutter</li><li class="chip">BLoC</li></ul></div><div class="stackrow"><span class="stacklabel">Admin</span><ul class="chips" translate="no"><li class="chip">Next.js</li><li class="chip">React</li><li class="chip">Tailwind CSS</li></ul></div><div class="stackrow"><span class="stacklabel">Backend</span><ul class="chips" translate="no"><li class="chip">NestJS</li><li class="chip">Prisma</li><li class="chip">PostgreSQL</li></ul></div><div class="stackrow"><span class="stacklabel">Platform</span><ul class="chips" translate="no"><li class="chip">Supabase</li><li class="chip">Paymob</li><li class="chip">Railway</li><li class="chip">Vercel</li><li class="chip">GitHub Actions</li></ul></div></div></div>
+      <div><p class="cs-col-label">Key decisions</p><ol class="cs-decisions"><li><span class="n">01</span><span>An additive-only /v1 contract with one response envelope, so app versions already on phones keep working through every release</span></li><li><span class="n">02</span><span>Server-driven version gating: the API tells each app build whether to show a soft or a hard update prompt</span></li><li><span class="n">03</span><span>OpenAPI drift checks in CI: the spec must match the code before the admin client is regenerated from it</span></li><li><span class="n">04</span><span>One permission matrix in a shared package feeds both the API guards and the dashboard</span></li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">03</span> &middot; My part</span><h2>What I worked on.</h2></div>
+    <div class="cs-part" data-reveal><p class="cs-part-label">Flutter app</p><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>21 feature modules, 823 passing tests, BLoC with clean architecture; offline request queue with replay, automatic token refresh, fault-tolerant parsing.</span></li><li><span class="dia" aria-hidden="true"></span><span>QR check-in, wallet checkout, realtime match chat and notifications on Supabase Realtime; server-driven version gate with hard and soft update prompts.</span></li></ul><p class="cs-part-label">Web admin panel and API</p><ul class="bullets"><li><span class="dia" aria-hidden="true"></span><span>Next.js admin dashboard over a NestJS API: 48 domain modules, 190+ versioned REST endpoints, additive-only /v1 contract with OpenAPI drift gates in CI; no release broke older installs.</span></li><li><span class="dia" aria-hidden="true"></span><span>Payments domain (Paymob behind a pluggable gateway adapter, wallet and credits ledger, promo codes, PDF receipts); multi-actor RBAC from a shared permission matrix; API migrated from EC2 to Railway.</span></li></ul></div>
+  </div>
+</section>
+
+<section class="cs-tight">
+  <div class="container">
+    <div class="section-head" data-reveal><span class="eyebrow"><span class="accent">04</span> &middot; Walkthrough</span><h2>Across app and dashboard.</h2></div>
+    <p class="cs-note">Screens from the live product in 2026. My work on Sportefy ran from November 2024 to February 2025.</p>
+    <div class="cs-walk" data-reveal><p class="cs-walk-label">Consumer app, Flutter</p><div class="cs-shots phones"><figure class="cs-shot"><div class="cs-phone"><img src="../../img/sportefy/app-home.webp" width="600" height="1277" alt="Sportefy app home with credits and nearby venues" loading="lazy"></div><figcaption class="cs-cap">Home: credits and nearby venues</figcaption></figure><figure class="cs-shot"><div class="cs-phone"><img src="../../img/sportefy/app-booking-details.webp" width="600" height="1277" alt="Sportefy slot booking and match setup" loading="lazy"></div><figcaption class="cs-cap">Slot booking and match setup</figcaption></figure><figure class="cs-shot"><div class="cs-phone"><img src="../../img/sportefy/app-checkout.webp" width="600" height="1277" alt="Sportefy checkout with credit pricing" loading="lazy"></div><figcaption class="cs-cap">Checkout with credit pricing</figcaption></figure></div></div><div class="cs-walk" data-reveal><p class="cs-walk-label">Admin dashboard, web</p><div class="cs-shots"><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sportefy/admin-manual-bookings.webp" width="1200" height="596" alt="Sportefy manual bookings" loading="lazy"></div><figcaption class="cs-cap">Manual bookings and reconciliation</figcaption></figure><figure class="cs-shot"><div class="cs-frame"><div class="cs-frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sportefy/admin-available-slots.webp" width="1200" height="596" alt="Sportefy availability and slots" loading="lazy"></div><figcaption class="cs-cap">Availability and slot management</figcaption></figure></div></div>
+  </div>
+</section>
+
+<section class="cs-impact">
+  <div class="container cs-impact-grid" data-reveal>
+    <div class="cs-metrics"><div class="cs-metric"><span class="cs-num">48</span><span class="cs-mcap">domain modules in the API</span></div><div class="cs-metric"><span class="cs-num">190+</span><span class="cs-mcap">versioned endpoints</span></div><div class="cs-metric"><span class="cs-num">823</span><span class="cs-mcap">passing Flutter tests</span></div></div>
+    <p>Live on both stores with an operations dashboard behind it, and no release has broken older installs. The figures count the codebase as it stood in September 2026.</p>
+  </div>
+</section>
+
+<section class="cs-next-wrap">
+  <div class="container">
+    <a class="cs-next" data-accent="voice" href="../../work/voice-intake/" data-reveal>
+      <span><span class="k">Next case study</span><span class="cs-next-title">Voice AI Patient-Intake Agent</span></span>
+      <span class="cs-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="container" data-reveal>
+    <span class="eyebrow">Contact</span>
+    <h2>Open to full-time roles.</h2>
+    <p class="lede">Remote in any time zone, or on-site with visa sponsorship. Notice period 15 days.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:z.mughal.24648@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>z.mughal.24648@gmail.com</a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" target="_blank" rel="noopener">View CV<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a class="btn btn-ghost" href="../../cv/Zohaib-Ali-Mughal-CV.pdf" download><i class="ph ph-download-simple" aria-hidden="true"></i>Download CV</a>
+    </div>
+    <div class="profile-links">
+      <span class="profile-label">Also on</span>
+      <a class="plink" href="https://github.com/Zohaib24648" target="_blank" rel="noopener"><i class="ph ph-github-logo" aria-hidden="true"></i><span>GitHub</span></a>
+      <a class="plink" href="https://linkedin.com/in/zohaibmughal24648" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo" aria-hidden="true"></i><span>LinkedIn</span></a>
+    </div>
+    <div class="contact-meta"><span>Zohaib Ali Mughal</span><span>Karachi, Pakistan, UTC+5</span></div>
+  </div>
+</footer>
+<script src="../../site.js" defer></script>
+</body>
+</html>
