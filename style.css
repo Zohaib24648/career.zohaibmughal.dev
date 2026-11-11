@@ -208,7 +208,6 @@ section { padding-block: clamp(72px, 9vw, 130px); }
 
 /* My part: the CV bank lines for this entry */
 .cs-part { display: grid; gap: 16px; max-width: 60em; }
-.cs-part-label { margin-top: 8px; font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
 
 /* Walkthrough: browser frames and phones */
 .cs-note { margin-top: -24px; font-size: 15px; color: var(--text-3); }
